@@ -107,10 +107,10 @@ async fn create_order_for_table(
 
     let url: String = format!("http://127.0.0.1:3000/order/{}", table_id);
     let executor = Client::new();
-    let resp = executor.post(&url).json(&order_items).send().await?;
+    let resp = executor.put(&url).json(&order_items).send().await?;
     let msg = &resp.text().await?;
-    println!("[POST] : {}", url);
-    println!("[POST] Order for table {} :  {:?}", table_id, msg);
+    println!("[PUT] : {}", url);
+    println!("[PUT] Order for table {} :  {:?}", table_id, msg);
     Ok(())
 }
 
@@ -156,11 +156,11 @@ async fn delete_order_item(table_id: i32, item_id: i32) -> Result<(), Error> {
 async fn update_table_order(table_id: i32, item: OrderItem) -> Result<(), Error> {
     let url: String = format!("http://127.0.0.1:3000/order/{}", table_id);
     let executor = Client::new();
-    let resp = executor.put(&url).json(&item).send().await?;
+    let resp = executor.post(&url).json(&item).send().await?;
     let msg = resp.text().await?.to_string();
-    println!("[UPDATE] : {}", url);
+    println!("[POST] : {}", url);
     println!(
-        "[UPDATE] item {} for table {} : {:?}",
+        "[POST] item {} for table {} : {:?}",
         item.item_id, table_id, msg
     );
     Ok(())
@@ -181,9 +181,9 @@ async fn create_table(table: Table) -> Result<(), Error> {
     let url: String = format!("http://127.0.0.1:3000/table/");
 
     let executor = Client::new();
-    let resp = executor.post(&url).json(&table).send().await?;
+    let resp = executor.put(&url).json(&table).send().await?;
     let msg = resp.text().await?.to_string();
-    println!("[POST] : {}", url);
-    println!("[POST] created table  : {:?}", msg);
+    println!("[PUT] : {}", url);
+    println!("[PUT] created table id={}: {:?}", &table.id, msg);
     Ok(())
 }
