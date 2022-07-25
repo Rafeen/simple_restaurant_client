@@ -6,7 +6,7 @@ This git repository contains the client application for this [application](https
 
 ## Prerequisites
 
-- Rust
+- [RUST](https://www.rust-lang.org/tools/install)
 - Simple Restaurant Api([server](https://github.com/Rafeen/simple_restaurant_api))
 
 
