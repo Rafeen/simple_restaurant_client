@@ -15,6 +15,7 @@ use reqwest::Client;
 use reqwest::Error;
 use tokio::runtime::Runtime;
 
+const MAX_REQUEST_PER_THREAD: i32 = 15;
 
 #[tokio::main]
 async fn main() {
@@ -41,7 +42,7 @@ async fn main() {
             }
 
             // each thread will perform 15 random requests
-            for _ in 1..=15 {
+            for _ in 1..=MAX_REQUEST_PER_THREAD {
                 let order_item = generate_order_items();
                 let request_type: i32 = random_numb(1, 6);
                 let interval: u64 = random_numb(1, 20) as u64;
