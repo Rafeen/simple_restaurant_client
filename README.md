@@ -1,4 +1,4 @@
-# Simple Restaurant Api
+# Simple Restaurant Client
 
 ## Context
 
