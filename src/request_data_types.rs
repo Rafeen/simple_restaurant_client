@@ -23,4 +23,3 @@ pub struct OrderItem {
     pub(crate) quantity: i32,
     pub(crate) served: bool,
 }
-

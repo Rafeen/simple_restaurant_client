@@ -1,6 +1,6 @@
+use crate::request_data_types::{NewItem, NewOrderItem, OrderItem, Table};
 use rand::distributions::Alphanumeric;
 use rand::Rng;
-use crate::request_data_types::{NewItem, NewOrderItem, Table, OrderItem};
 
 pub fn random_string() -> String {
     return rand::thread_rng()
@@ -29,7 +29,7 @@ pub fn generate_order_items() -> Vec<NewOrderItem> {
     items
 }
 
-pub fn get_random_id_for_generated_items(item_count: i32) -> i32{
+pub fn get_random_id_for_generated_items(item_count: i32) -> i32 {
     let mut rng = rand::thread_rng();
     return rng.gen_range(1..=item_count);
 }
@@ -40,6 +40,6 @@ pub async fn generate_random_item_for_update(item_count: i32) -> OrderItem {
     OrderItem {
         item_id: get_random_id_for_generated_items(item_count),
         quantity: rng.gen_range(1..=15),
-        served: false
+        served: false,
     }
 }
